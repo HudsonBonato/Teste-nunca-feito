@@ -4,6 +4,8 @@ import Home from '../views/Home.vue'
 import Cadastro from '../views/Cadastro.vue'
 import Usuario from '../views/Usuario.vue'
 
+
+
 Vue.use(VueRouter)
 
 const routes = [
