@@ -5,7 +5,7 @@
       <router-link to="/cadastro">Cadastro</router-link> |
       <router-link to="/usuario">Usuario</router-link>
     </div>
-    <router-view/>
+    <router-view />
   </div>
 </template>
 
