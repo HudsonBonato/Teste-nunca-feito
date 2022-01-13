@@ -104,7 +104,7 @@
           </div>
         </div>
         <div class="col-12">
-          <button type="submit" class="btn btn-primary">Entrar</button>
+          <button type="submit" class="btn btn-primary">Cadastrar</button>
         </div>
       </form>
     </div>
