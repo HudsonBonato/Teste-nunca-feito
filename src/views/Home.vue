@@ -16,7 +16,6 @@
   <div class="p-2 bg-light border">Usuario</div>
 </div>
     </div>
-    
   </div>
 </template>
 
@@ -27,3 +26,13 @@ export default {
   name: "Home",
 };
 </script>
+
+<!-- <style scoped>
+h1 {
+  background-color: #354;
+  font-size: 50px;
+  color: #FFF
+}
+
+</style> -->
+
