@@ -4,44 +4,13 @@
 
     <h1>Lista de Usuarios</h1>
 
-    <form>
-      <div class="container" id="login-home">
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label"
-            >Endereço de email</label
-          >
-          <input
-            type="email"
-            class="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
-          />
-          <div id="emailHelp" class="form-text">
-            Nunca compartilharemos seu e-mail com mais ninguém.
-          </div>
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Senha</label>
-          <input
-            type="password"
-            class="form-control"
-            id="exampleInputPassword1"
-          />
-        </div>
-        <div class="mb-3 form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-          <label class="form-check-label" for="exampleCheck1"
-            >Lembre de mim</label
-          >
-        </div>
-        <button type="submit" class="btn btn-primary">Enviar</button>
-      </div>
-    </form>
-
     <div class="container" id="lista-home">
-      <ol class="list-group list-group-numbered">
-        <li class="list-group-item">Usuario</li>
-      </ol>
+      <ul class="list-group list-group-numbered">
+        <li v-for="(list, key) in data" class="list-group-item" :key="key">
+          {{ list.nome }} - {{ list.sobrenome }} - {{ list.celular }} -
+          {{ list.endereco }}
+        </li>
+      </ul>
     </div>
   </div>
 </template>
@@ -52,14 +21,49 @@
 
 export default {
   name: "Home",
+  data() {
+    return {
+      data: [],
+      nome: "",
+      sobrenome: "",
+      celular: "",
+      endereco: "",
+    };
+  },
+  methods: {
+    salvar() {
+      this.axios
+        .post("http://127.0.0.1:8000/teste", {
+          nome: this.nome,
+          sobrenome: this.sobrenome,
+          celular: this.celular,
+          endereco: this.endereco,
+        })
+        .then((response) => {
+          console.log(response.data);
+          this.sobrenome = response.data.sobrenome;
+          this.celular = response.data.celular;
+          this.endereco = response.data.endereco;
+        });
+    },
+  },
+  mounted() {
+    this.axios.get("http://127.0.0.1:8000/teste-view").then((response) => {
+        this.data = response.data;
+      });
+  }
 };
 </script>
 
-<!--<style scoped>
+<style scoped>
+
 h1 {
-    background-color: #354;
+    background-color: #41b883;
+    margin-left: 300px;
+    margin-right: 300px;
+    margin-bottom: 20px;
     font-size: 50px;
-    color: #FFF
+    color: #FFF;
 }
-</style>-->
+</style>
 

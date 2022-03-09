@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Informação do Usuario</h1>
+    <h1>Informação do Usuário</h1>
 
     <div class="container">
     <div class="main-body">
@@ -24,7 +24,7 @@
                   <div class="d-flex flex-column align-items-center text-center">
                     <img src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg" alt="Admin" class="rounded-circle" width="150">
                     <div class="mt-3">
-                      <h4>Usuario</h4>
+                      <h4>Usuário</h4>
                       <p class="text-secondary mb-1">Full Stack Developer</p>
                       <!--<p class="text-muted font-size-sm">San Francisco, CA</p>
                       <button class="btn btn-primary">Follow</button>

@@ -15,8 +15,8 @@
               width="150px"
               src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
             /><span class="font-weight-bold">Usuario</span
-            ><span class="text-black-50">usuario@mail.com</span
-            >Masculino <span></span>
+            ><span class="text-black-50">usuario@mail.com</span>Masculino
+            <span></span>
           </div>
         </div>
         <div class="col-md-5 border-right">
@@ -186,7 +186,7 @@
                 /div>         
             </div> -->
             <div class="mt-5 text-center">
-              <button class="btn btn-primary profile-button" type="submit">
+              <button class="btn btn-primary profile-button" @click="salvar" type="buttom">
                 Salve o Perfil
               </button>
             </div>
@@ -232,144 +232,42 @@
       </div>
     </div>
   </div>
-
-  <!--  <div class="container">
-      <div class="row g-3">
-        <div class="col">
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Primeiro Nome"
-            aria-label="First name"
-          />
-        </div>
-
-        <div class="col">
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Segundo Nome"
-            aria-label="Last name"
-          />
-        </div>
-      </div>
-
-      <form class="row g-3">
-        <div class="col-md-6">
-          <label for="inputEmail4" class="form-label"></label>
-          <input
-            type="email"
-            class="form-control"
-            placeholder="Email"
-            id="inputEmail4"
-          />
-        </div>
-
-        <div class="col-md-6">
-          <label for="inputPassword4" class="form-label"></label>
-          <input
-            type="password"
-            class="form-control"
-            placeholder="Senha"
-            id="inputPassword4"
-          />
-        </div>
-
-        <div class="col-12">
-          <label for="inputAddress" class="form-label"></label>
-          <input
-            type="text"
-            class="form-control"
-            id="inputAddress"
-            placeholder="Endereço"
-          />
-        </div>
-
-        <div class="col-md-8">
-          <label for="inputCity" class="form-label"></label>
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Cidade"
-            id="inputCity"
-          />
-        </div>
-
-        <div class="col-md-4">
-          <label for="inputState" class="form-label"></label>
-
-          <select id="inputState" class="form-select">
-            <option selected>Estado</option>
-
-            <option value="AC">Acre</option>
-
-            <option value="AL">Alagoas</option>
-
-            <option value="AP">Amapá</option>
-
-            <option value="AM">Amazonas</option>
-
-            <option value="BA">Bahia</option>
-
-            <option value="CE">Ceará</option>
-
-            <option value="DF">Distrito Federal</option>
-
-            <option value="ES">Espírito Santo</option>
-
-            <option value="GO">Goiás</option>
-
-            <option value="MA">Maranhão</option>
-
-            <option value="MT">Mato Grosso</option>
-
-            <option value="MS">Mato Grosso do Sul</option>
-
-            <option value="MG">Minas Gerais</option>
-
-            <option value="PA">Pará</option>
-
-            <option value="PB">Paraíba</option>
-
-            <option value="PR">Paraná</option>
-
-            <option value="PE">Pernambuco</option>
-
-            <option value="PI">Piauí</option>
-
-            <option value="RJ">Rio de Janeiro</option>
-
-            <option value="RN">Rio Grande do Norte</option>
-
-            <option value="RS">Rio Grande do Sul</option>
-
-            <option value="RO">Rondônia</option>
-
-            <option value="RR">Roraima</option>
-
-            <option value="SC">Santa Catarina</option>
-
-            <option value="SP">São Paulo</option>
-
-            <option value="SE">Sergipe</option>
-
-            <option value="TO">Tocantins</option>
-          </select>
-        </div>
-
-        <div class="col-2">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="gridCheck" />
-
-            <label class="form-check-label" for="gridCheck">
-              Confirme seus dados
-            </label>
-          </div>
-        </div>
-
-        <div class="col-12">
-          <button type="submit" class="btn btn-primary">Cadastrar</button>
-        </div>
-      </form>
-    </div> -->
 </template>
+
+
+//v-model="test"
+
+<script>
+export default {
+  name: "Cadastro",
+  data() {
+    return {
+      data: [],
+      nome: "",
+      sobrenome: "",
+      celular: "",
+      endereco: "",
+    };
+  },
+  methods: {
+    salvar() {
+      this.axios
+        .post("http://127.0.0.1:8000/teste", {
+          nome: this.nome,
+          sobrenome: this.sobrenome,
+          celular: this.celular,
+          endereco: this.endereco,
+        })
+        .then((response) => {
+          console.log(response.data);
+          this.sobrenome = response.data.sobrenome;
+          this.celular = response.data.celular;
+          this.endereco = response.data.endereco;
+        });
+      this.axios.get("http://127.0.0.1:8000/teste-view").then((response) => {
+        this.data = response.data;
+      });
+    },
+  },
+};
+</script>
